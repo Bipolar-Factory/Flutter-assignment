@@ -1,6 +1,6 @@
 # Bipolartest
 
-Flutter Assignment From Bipolar Industries.
+Flutter Assignment From Bipolar Factory.
 
 ## Getting Started
 
