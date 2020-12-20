@@ -68,7 +68,14 @@ flutter:
   assets:
    - assets/rive/loading.flr
    - assets/images/welcome.png
-
+   - assets/images/profile1.jpg
+   - assets/images/profile2.jpg
+   - assets/images/profile3.jpg
+   - assets/images/profile4.jpeg
+   - assets/images/profile5.jpg
+   - assets/images/profile6.jpeg
+   - assets/images/profile7.jpg
+   - assets/images/profile8.jpg
   fonts:
     - family: Poppins
       fonts:
