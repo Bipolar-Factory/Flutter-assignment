@@ -2,6 +2,10 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 
 class AudioBox extends StatefulWidget {
+  final String url;
+
+  const AudioBox({Key key, this.url}) : super(key: key);
+
   @override
   _AudioBoxState createState() => _AudioBoxState();
 }
@@ -14,13 +18,13 @@ class _AudioBoxState extends State<AudioBox> {
   Duration duration;
   int time;
 
-  String timeLeft = "";
+  String timeLeft = "Please Wait";
   double progress = 0.0;
 
   startPlaying() async {
     if (!isStarted) {
       await audioPlayer.play(
-        "https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_2MG.mp3",
+        widget.url,
       );
       isStarted = true;
     } else

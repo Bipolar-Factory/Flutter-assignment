@@ -10,5 +10,5 @@ const profile6Image = 'assets/images/profile6.jpeg';
 const profile7Image = 'assets/images/profile7.jpg';
 const profile8Image = 'assets/images/profile8.jpg';
 
-const testAudio = "assets/audios/audio.mp3";
-const testVideo = "assets/videos/video.mp4";
+const testAudio = 'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_2MG.mp3';
+const testVideo = 'https://www.sample-videos.com/video123/mp4/360/big_buck_bunny_360p_1mb.mp4';

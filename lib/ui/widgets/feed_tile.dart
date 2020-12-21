@@ -31,13 +31,16 @@ class FeedTile extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                  image: DecorationImage(image: AssetImage(profileImage)),
-                  borderRadius: BorderRadius.circular(16),
-                  border: Border.all(color: Colors.black, width: 2),
+              Hero(
+                tag: name,
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(image: AssetImage(profileImage)),
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: Colors.black, width: 2),
+                  ),
                 ),
               ),
               SizedBox(width: 24),

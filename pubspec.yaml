@@ -81,8 +81,7 @@ flutter:
    - assets/images/profile6.jpeg
    - assets/images/profile7.jpg
    - assets/images/profile8.jpg
-   - assets/audios/audio.mp3
-   - assets/videos/video.mp4
+
   fonts:
     - family: Poppins
       fonts:

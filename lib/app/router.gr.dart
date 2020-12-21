@@ -69,6 +69,7 @@ class MainRouter extends RouterBase {
         builder: (context) => ChatView(
           key: args.key,
           name: args.name,
+          image: args.image,
         ),
         settings: data,
       );
@@ -90,5 +91,6 @@ class MainRouter extends RouterBase {
 class ChatViewArguments {
   final Key key;
   final String name;
-  ChatViewArguments({this.key, this.name});
+  final String image;
+  ChatViewArguments({this.key, this.name, this.image});
 }

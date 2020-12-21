@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoBox extends StatefulWidget {
-  final String video;
+  final String url;
 
-  const VideoBox({Key key, this.video}) : super(key: key);
+  const VideoBox({Key key, this.url}) : super(key: key);
 
   @override
   _VideoBoxState createState() => _VideoBoxState();
@@ -15,9 +15,7 @@ class _VideoBoxState extends State<VideoBox> {
 
   @override
   void initState() {
-    _controller = VideoPlayerController.network(
-      'https://www.sample-videos.com/video123/mp4/360/big_buck_bunny_360p_1mb.mp4'
-    );
+    _controller = VideoPlayerController.network(widget.url);
     _controller
       ..initialize().then((_) {
         _controller.setLooping(true);
@@ -31,9 +29,9 @@ class _VideoBoxState extends State<VideoBox> {
   }
 
   @override
-  void dispose() {
+  void dispose() async {
     _controller.removeListener(() {});
-    _controller.dispose();
+    await _controller.dispose();
     super.dispose();
   }
 

@@ -6,7 +6,12 @@ ThemeData lightTheme = ThemeData(
   fontFamily: 'Poppins',
   textTheme: TextTheme(
     headline5: TextStyle(
-      color: Color(0xff6c63df),
+      color: Colors.black87,
+      fontSize: 26,
+      fontWeight: FontWeight.bold,
+    ),
+    headline6: TextStyle(
+      color: Colors.black87,
       fontSize: 26,
       fontWeight: FontWeight.bold,
     ),

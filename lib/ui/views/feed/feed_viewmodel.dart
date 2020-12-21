@@ -52,18 +52,20 @@ class FeedViewModel extends BaseViewModel {
     "15/12",
   ];
 
-  void newChat(){
+  void newChat() {
     _dialog.showDialog(
-      title: 'Oops!',
-      description: 'This feature hasn\'t been implemented yet',
-      buttonTitle: 'No problem'
-    );
+        title: 'Oops!', description: 'This feature hasn\'t been implemented yet', buttonTitle: 'No problem');
   }
-  void gotoSettings(){
+
+  void gotoSettings() {
     _navigator.navigateTo(Routes.settings);
   }
 
-  void gotoChat(String name){
-    _navigator.navigateTo(Routes.chat, arguments: ChatViewArguments(name: name));
+  void gotoChat(String name, String image) {
+    _navigator.navigateTo(Routes.chat,
+        arguments: ChatViewArguments(
+          name: name,
+          image: image,
+        ));
   }
 }

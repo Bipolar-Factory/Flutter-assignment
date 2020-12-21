@@ -19,12 +19,13 @@ class ChatViewModel extends StreamViewModel<MessageModel>{
     super.onData(data);
   }
 
-  void sendText(String message){
+  void sendText(String message) async {
     if(message.isEmpty) return;
     MessageModel _message = MessageModel(
       text: message,
     );
     _chatManager.addMessage(_message);
+    await Future.delayed(Duration(milliseconds: 300));
     MessageModel _reply = MessageModel(
       text: "Hey ${_localData.user.name}! This is just a dummy reply. Don't pay much attention!",
       senderName: 'Text',
@@ -32,22 +33,22 @@ class ChatViewModel extends StreamViewModel<MessageModel>{
     _chatManager.addMessage(_reply);
   }
 
-  void startMimic(String name){
+  void startMimic(String name) async {
     MessageModel _imageMessage = MessageModel(
       text: 'Check this Image!',
       type: MessageType.image,
       image: profile1Image,
     );
     _chatManager.addMessage(_imageMessage);
-
+    await Future.delayed(Duration(milliseconds: 300));
     MessageModel _audioMessage = MessageModel(
       text: 'Check this Audio!',
       type: MessageType.audio,
-      audio: testVideo,
+      audio: testAudio,
       senderName: name
     );
     _chatManager.addMessage(_audioMessage);
-
+    await Future.delayed(Duration(milliseconds: 300));
     MessageModel _videoMessage = MessageModel(
       text: 'Check this Video!',
       type: MessageType.video,

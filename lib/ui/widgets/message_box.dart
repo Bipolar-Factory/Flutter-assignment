@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mimichat/datamodels/message_model.dart';
 import 'package:mimichat/ui/widgets/audio_box.dart';
+import 'package:mimichat/ui/widgets/slide_in.dart';
 import 'package:mimichat/ui/widgets/video_box.dart';
 
 class MessageBox extends StatelessWidget {
@@ -44,6 +45,7 @@ class MessageBox extends StatelessWidget {
       alignment: Alignment.center,
       child: Container(
         padding: EdgeInsets.all(8),
+        margin: EdgeInsets.all(8),
         child: Text(message.text),
         decoration: BoxDecoration(
           color: Colors.yellow[200],
@@ -55,18 +57,20 @@ class MessageBox extends StatelessWidget {
   }
 
   Widget textMessage(BuildContext context){
-    return Container(
-      alignment: getAlignment(),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          padding: EdgeInsets.all(12),
-          child: Text(message.text),
-          decoration: BoxDecoration(
-              color: getColor(),
-              borderRadius: getBorderRadius(),
-              border: Border.all(color: getBorderColor())
+    return SlideIn(
+      child: Container(
+        alignment: getAlignment(),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.all(12),
+            child: Text(message.text),
+            decoration: BoxDecoration(
+                color: getColor(),
+                borderRadius: getBorderRadius(),
+                border: Border.all(color: getBorderColor())
+            ),
           ),
         ),
       ),
@@ -74,23 +78,25 @@ class MessageBox extends StatelessWidget {
   }
 
   Widget imageMessage(BuildContext context){
-    return Container(
-      alignment: getAlignment(),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          padding: EdgeInsets.all(12),
-          child: Column(
-            children: [
-              Image.asset(message.image),
-              Text(message.text),
-            ],
-          ),
-          decoration: BoxDecoration(
-              color: getColor(),
-              borderRadius: getBorderRadius(),
-              border: Border.all(color: getBorderColor())
+    return SlideIn(
+      child: Container(
+        alignment: getAlignment(),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.all(12),
+            child: Column(
+              children: [
+                Image.asset(message.image),
+                Text(message.text),
+              ],
+            ),
+            decoration: BoxDecoration(
+                color: getColor(),
+                borderRadius: getBorderRadius(),
+                border: Border.all(color: getBorderColor())
+            ),
           ),
         ),
       ),
@@ -98,23 +104,25 @@ class MessageBox extends StatelessWidget {
   }
 
   Widget videoMessage(BuildContext context){
-    return Container(
-      alignment: getAlignment(),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          padding: EdgeInsets.all(12),
-          child: Column(
-            children: [
-              VideoBox(video: message.video),
-              Text(message.text),
-            ],
-          ),
-          decoration: BoxDecoration(
-              color: getColor(),
-              borderRadius: getBorderRadius(),
-              border: Border.all(color: getBorderColor())
+    return SlideIn(
+      child: Container(
+        alignment: getAlignment(),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.all(12),
+            child: Column(
+              children: [
+                VideoBox(url: message.video),
+                Text(message.text),
+              ],
+            ),
+            decoration: BoxDecoration(
+                color: getColor(),
+                borderRadius: getBorderRadius(),
+                border: Border.all(color: getBorderColor())
+            ),
           ),
         ),
       ),
@@ -123,26 +131,28 @@ class MessageBox extends StatelessWidget {
   }
 
   Widget audioMessage(BuildContext context) {
-    return Container(
-      alignment: getAlignment(),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxWidth: MediaQuery
-            .of(context)
-            .size
-            .width * 0.7),
-        child: Container(
-          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          padding: EdgeInsets.all(12),
-          child: Column(
-            children: [
-              AudioBox(),
-              Text(message.text),
-            ],
-          ),
-          decoration: BoxDecoration(
-              color: getColor(),
-              borderRadius: getBorderRadius(),
-              border: Border.all(color: getBorderColor())
+    return SlideIn(
+      child: Container(
+        alignment: getAlignment(),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxWidth: MediaQuery
+              .of(context)
+              .size
+              .width * 0.7),
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: EdgeInsets.all(12),
+            child: Column(
+              children: [
+                AudioBox(url: message.audio),
+                Text(message.text),
+              ],
+            ),
+            decoration: BoxDecoration(
+                color: getColor(),
+                borderRadius: getBorderRadius(),
+                border: Border.all(color: getBorderColor())
+            ),
           ),
         ),
       ),
@@ -151,7 +161,6 @@ class MessageBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(message.senderName);
     if (message.admin) return adminMessage();
     else if(message.type == MessageType.text) return textMessage(context);
     else if(message.type == MessageType.image) return imageMessage(context);
