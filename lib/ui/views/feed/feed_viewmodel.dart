@@ -64,6 +64,6 @@ class FeedViewModel extends BaseViewModel {
   }
 
   void gotoChat(String name){
-    _navigator.navigateTo(Routes.chat);
+    _navigator.navigateTo(Routes.chat, arguments: ChatViewArguments(name: name));
   }
 }

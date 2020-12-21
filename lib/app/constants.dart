@@ -9,3 +9,6 @@ const profile5Image = 'assets/images/profile5.jpg';
 const profile6Image = 'assets/images/profile6.jpeg';
 const profile7Image = 'assets/images/profile7.jpg';
 const profile8Image = 'assets/images/profile8.jpg';
+
+const testAudio = "assets/audios/audio.mp3";
+const testVideo = "assets/videos/video.mp4";

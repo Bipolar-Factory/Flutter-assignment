@@ -62,8 +62,14 @@ class MainRouter extends RouterBase {
       );
     },
     ChatView: (data) {
+      final args = data.getArgs<ChatViewArguments>(
+        orElse: () => ChatViewArguments(),
+      );
       return MaterialPageRoute<dynamic>(
-        builder: (context) => ChatView(),
+        builder: (context) => ChatView(
+          key: args.key,
+          name: args.name,
+        ),
         settings: data,
       );
     },
@@ -74,4 +80,15 @@ class MainRouter extends RouterBase {
       );
     },
   };
+}
+
+/// ************************************************************************
+/// Arguments holder classes
+/// *************************************************************************
+
+/// ChatView arguments holder class
+class ChatViewArguments {
+  final Key key;
+  final String name;
+  ChatViewArguments({this.key, this.name});
 }

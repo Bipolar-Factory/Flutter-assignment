@@ -4,6 +4,9 @@ import 'package:mimichat/ui/widgets/message_box.dart';
 import 'package:stacked/stacked.dart';
 
 class ChatView extends StatefulWidget {
+  final String name;
+
+  const ChatView({Key key, this.name}) : super(key: key);
   @override
   _ChatViewState createState() => _ChatViewState();
 }
@@ -31,7 +34,7 @@ class _ChatViewState extends State<ChatView> {
           appBar: AppBar(
             backgroundColor: Colors.white,
             title: Text(
-              '???',
+              widget.name??'???',
               style: Theme.of(context).textTheme.headline5,
             ),
             titleSpacing: 0,
@@ -61,16 +64,22 @@ class _ChatViewState extends State<ChatView> {
                       child: TextField(
                         controller: _messageController,
                         decoration: InputDecoration(
-                          labelText: 'Message',
+                          hintText: 'Type message here'
                         ),
                       ),
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.send_rounded),
+                    icon: Icon(Icons.attachment_rounded, color: Color(0xff6c63ff)),
                     onPressed: () {
-                      _messageController.text = '';
+                      model.startMimic(widget.name??'');
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.send_rounded, color: Color(0xff6c63ff)),
+                    onPressed: () {
                       model.sendText(_messageController.text);
+                      _messageController.text = '';
                     },
                   ),
                 ],

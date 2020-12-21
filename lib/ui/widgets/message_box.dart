@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mimichat/datamodels/message_model.dart';
+import 'package:mimichat/ui/widgets/audio_box.dart';
+import 'package:mimichat/ui/widgets/video_box.dart';
 
 class MessageBox extends StatelessWidget {
   final MessageModel message;
@@ -27,13 +29,14 @@ class MessageBox extends StatelessWidget {
   }
 
   Color getColor() {
-    if (message.senderName != null) return Colors.blue[100];
-    return Colors.purple[100];
+    if (message.senderName != null) return Color(0x886c63ff);
+    return Colors.white;
   }
 
   Color getBorderColor() {
-    if (message.senderName != null) return Colors.blue[300];
-    return Colors.purple[300];
+    // if (message.senderName != null) return Color(0xff6c63ff);
+    // return Colors.black54;
+    return Color(0xff6c63ff);
   }
 
   Widget adminMessage() {
@@ -51,10 +54,7 @@ class MessageBox extends StatelessWidget {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    print(message.senderName);
-    if (message.admin) return adminMessage();
+  Widget textMessage(BuildContext context){
     return Container(
       alignment: getAlignment(),
       child: ConstrainedBox(
@@ -64,12 +64,98 @@ class MessageBox extends StatelessWidget {
           padding: EdgeInsets.all(12),
           child: Text(message.text),
           decoration: BoxDecoration(
-            color: getColor(),
-            borderRadius: getBorderRadius(),
-            border: Border.all(color: getBorderColor())
+              color: getColor(),
+              borderRadius: getBorderRadius(),
+              border: Border.all(color: getBorderColor())
           ),
         ),
       ),
     );
+  }
+
+  Widget imageMessage(BuildContext context){
+    return Container(
+      alignment: getAlignment(),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: EdgeInsets.all(12),
+          child: Column(
+            children: [
+              Image.asset(message.image),
+              Text(message.text),
+            ],
+          ),
+          decoration: BoxDecoration(
+              color: getColor(),
+              borderRadius: getBorderRadius(),
+              border: Border.all(color: getBorderColor())
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget videoMessage(BuildContext context){
+    return Container(
+      alignment: getAlignment(),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.7),
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: EdgeInsets.all(12),
+          child: Column(
+            children: [
+              VideoBox(video: message.video),
+              Text(message.text),
+            ],
+          ),
+          decoration: BoxDecoration(
+              color: getColor(),
+              borderRadius: getBorderRadius(),
+              border: Border.all(color: getBorderColor())
+          ),
+        ),
+      ),
+    );
+
+  }
+
+  Widget audioMessage(BuildContext context) {
+    return Container(
+      alignment: getAlignment(),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxWidth: MediaQuery
+            .of(context)
+            .size
+            .width * 0.7),
+        child: Container(
+          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          padding: EdgeInsets.all(12),
+          child: Column(
+            children: [
+              AudioBox(),
+              Text(message.text),
+            ],
+          ),
+          decoration: BoxDecoration(
+              color: getColor(),
+              borderRadius: getBorderRadius(),
+              border: Border.all(color: getBorderColor())
+          ),
+        ),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print(message.senderName);
+    if (message.admin) return adminMessage();
+    else if(message.type == MessageType.text) return textMessage(context);
+    else if(message.type == MessageType.image) return imageMessage(context);
+    else if(message.type == MessageType.video) return videoMessage(context);
+    return audioMessage(context);
   }
 }
