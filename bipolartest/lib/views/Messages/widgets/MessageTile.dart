@@ -1,5 +1,4 @@
 import 'package:bipolartest/global/circularimage.dart';
-import 'package:bipolartest/model/MessageDetailsModel.dart';
 import 'package:bipolartest/model/MessageModel.dart';
 import 'package:bipolartest/services/Extension.dart';
 import 'package:bipolartest/views/Messages/MessageDetails.dart';

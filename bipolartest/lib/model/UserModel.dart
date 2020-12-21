@@ -11,30 +11,19 @@ class User {
   String location;
   String email;
 
-  User(
-      {this.id,
-      this.name,
-      this.username,
-      this.photo,
-      this.location,
-      this.email,
-      this.followers,
-      this.following,
-      this.likes,
-      this.isFollowing = false,
-      this.posts});
+  User({
+    this.id,
+    this.name,
+    this.username,
+    this.photo,
+  });
 
   factory User.fromMap(Map data) {
     return User(
-        id: data["uid"],
-        name: data["userName"],
-        username: data["userName"],
-        followers: data["followers"],
-        following: data["following"],
-        email: data["email"],
-        location: "",
-        likes: 0,
-        photo: data["profile_url"],
-        posts: data["posts"]);
+      id: data["uid"],
+      name: data["userName"],
+      username: data["userName"],
+      photo: data["profile_url"],
+    );
   }
 }

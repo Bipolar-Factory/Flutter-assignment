@@ -46,7 +46,7 @@ class MessagesTab extends StatelessWidget {
     );
 
     return HomeView(
-      title: "Messages",
+      title: "Bipolar Chat",
       body: Container(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

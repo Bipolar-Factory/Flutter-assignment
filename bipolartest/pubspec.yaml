@@ -23,6 +23,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  cached_network_image: ^2.4.1
   cupertino_icons: ^1.0.0
   flutter_hooks: ^0.15.0
   flutter_icons: ^1.1.0
@@ -33,6 +34,7 @@ dependencies:
   lottie: ^0.7.0+1
   simple_animations: ^2.4.2
   supercharged: ^1.12.0
+  video_player: ^1.0.1
 
 dev_dependencies:
   flutter_test:
