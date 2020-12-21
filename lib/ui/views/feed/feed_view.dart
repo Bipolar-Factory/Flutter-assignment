@@ -31,7 +31,7 @@ class FeedView extends StatelessWidget {
                       alignment: Alignment.bottomLeft,
                       padding: EdgeInsets.only(bottom: 6, left: 16),
                       child: Container(
-                        width: 150,
+                        width: 180,
                         height: 2,
                         color: Colors.black87,
                       ),

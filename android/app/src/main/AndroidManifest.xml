@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.az.mimichat">
+    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="mimichat"
+        android:label="Mimichat"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

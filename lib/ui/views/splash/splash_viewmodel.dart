@@ -10,8 +10,8 @@ class SplashViewModel extends BaseViewModel{
   NavigationService _navigator = locator<NavigationService>();
 
   void initialize() async {
-    //Minimum delay of 5 seconds
-    await Future.delayed(Duration(seconds: 5));
+    //Minimum delay of 3 seconds
+    await Future.delayed(Duration(seconds: 3));
     UserModel user = _localData.user;
     if(user == null){
       _navigator.replaceWith(Routes.intro);
