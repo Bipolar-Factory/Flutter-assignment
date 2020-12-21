@@ -1,16 +1,15 @@
-# mimichat
+# Mimichat (Mimic + chat = Mimichat) 
+## (Only a demo)
 
-A dummy chat app ui
+A simplistic modern material UI based dummy chat app that mimics a simple conversation.
 
-## Getting Started
+## Includes:
+* A splash screen
+* An intro screen for first time to ask your name
+* A feed screen showing all chats
+* A chat screen with:
+  - Text message mimic: send a message, you will get a dummy response
+  - Attachment mimic: you send an image, receive an audio then you again send a video
+* A settings screen to change your name
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Google drive link to Fat APK: https://drive.google.com/file/d/1f34Io3i4T0tmo9eiAZz-hz-GPzJhGLwb/view?usp=sharing
